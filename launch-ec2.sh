@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e  # Exit if any command fails
+
 source config.cfg
 
 LOG_FILE="logs/launch.log"
@@ -33,17 +34,17 @@ echo "🌐 Public IP: $PUBLIC_IP"
 echo "⏳ Waiting for SSH availability..."
 sleep 30
 
-# Install Docker
-echo "📦 Installing Docker on $PUBLIC_IP..."
+# Upload bootstrap.sh
+scp -o StrictHostKeyChecking=no -i "~/.ssh/$KEY_NAME.pem" bootstrap.sh ec2-user@$PUBLIC_IP:~/bootstrap.sh
+
+# Run bootstrap.sh inside EC2
 ssh -o StrictHostKeyChecking=no -i "~/.ssh/$KEY_NAME.pem" ec2-user@$PUBLIC_IP << 'EOF'
-  sudo yum update -y
-  sudo amazon-linux-extras install docker -y
-  sudo service docker start
-  sudo usermod -aG docker ec2-user
+  chmod +x bootstrap.sh
+  ./bootstrap.sh
 EOF
 
-echo "✅ Docker installed!"
-echo "🔗 Connect to your instance with:"
+echo "✅ Instance setup complete!"
+echo "🔗 Connect via:"
 echo "ssh -i ~/.ssh/$KEY_NAME.pem ec2-user@$PUBLIC_IP"
 
 # Log it
