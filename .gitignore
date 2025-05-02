@@ -1,3 +1,4 @@
 # Ignore SSH keys and logs
 *.pem
+*.png
 logs/

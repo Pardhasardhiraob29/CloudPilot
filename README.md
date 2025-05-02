@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="banner.png" alt="CloudPilot Banner" width="100%"/>
+  <img src="assets/banner1.png" alt="CloudPilot Banner" width="100%"/>
 
   <h1>🚀 CloudPilot</h1>
   <p><em>Simple CLI tools to launch, monitor, and manage AWS EC2 instances.</em></p>
