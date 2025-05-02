@@ -48,5 +48,12 @@ echo "🔗 Connect via:"
 echo "ssh -i ~/.ssh/$KEY_NAME.pem ec2-user@$PUBLIC_IP"
 
 # Log it
+TODAY=$(date '+%Y-%m-%d')
+LOG_DIR="logs/launch"
+LOG_FILE="$LOG_DIR/launch-$TODAY.log"
+mkdir -p "$LOG_DIR"
+
 echo "$(date '+%Y-%m-%d %H:%M:%S') | Launched: $INSTANCE_ID | IP: $PUBLIC_IP" >> "$LOG_FILE"
+echo "📜 Log saved to $LOG_FILE"
+
 
