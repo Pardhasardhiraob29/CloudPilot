@@ -1,0 +1,3 @@
+# Ignore SSH keys and logs
+*.pem
+logs/
