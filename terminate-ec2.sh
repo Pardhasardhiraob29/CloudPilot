@@ -24,4 +24,10 @@ aws ec2 wait instance-terminated --instance-ids "$INSTANCE_ID"
 echo "✅ Instance $INSTANCE_ID terminated."
 
 # Log the action
+TODAY=$(date '+%Y-%m-%d')
+LOG_DIR="logs/terminate"
+LOG_FILE="$LOG_DIR/terminate-$TODAY.log"
+mkdir -p "$LOG_DIR"
+
 echo "$(date '+%Y-%m-%d %H:%M:%S') | Terminated: $INSTANCE_ID" >> "$LOG_FILE"
+
