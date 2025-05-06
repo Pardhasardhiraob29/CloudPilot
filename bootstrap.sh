@@ -17,4 +17,3 @@ echo "🖥️ Setting hostname..."
 sudo hostnamectl set-hostname cloudpilot-node
 echo "127.0.0.1   cloudpilot-node" | sudo tee -a /etc/hosts
 
-echo "✅ Bootstrap complete!"
